@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_product_category_form_auto_price" model="ir.ui.view">
+        <field name="name">product.category.form.auto.price</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='first']" position="inside">
+                <field name="x_default_auto_price_enabled"/>
+                <field name="x_default_formula_type"/>
+                <field name="x_default_formula_value"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

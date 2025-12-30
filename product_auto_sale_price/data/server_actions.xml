@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="server_action_recompute_sale_price" model="ir.actions.server">
+        <field name="name">Recalcular precios de venta</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">records.action_recompute_sale_price()</field>
+    </record>
+</odoo>
