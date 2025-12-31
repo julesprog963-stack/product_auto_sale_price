@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//group[@name='group_standard_price']" position="inside">
-                <group string="Precio de venta automático" colspan="2">
+                <group string="Precio de venta automático" colspan="2" groups="product_auto_sale_price.group_auto_sale_price_manager">
                     <group>
                         <field name="x_auto_price_enabled"/>
                         <field name="x_formula_type"/>
@@ -28,8 +28,8 @@
         <field name="inherit_id" ref="product.product_template_tree_view"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='list_price']" position="after">
-                <field name="x_auto_price_enabled" optional="show"/>
-                <field name="x_formula_type" optional="hide"/>
+                <field name="x_auto_price_enabled" optional="show" groups="product_auto_sale_price.group_auto_sale_price_manager"/>
+                <field name="x_formula_type" optional="hide" groups="product_auto_sale_price.group_auto_sale_price_manager"/>
             </xpath>
         </field>
     </record>

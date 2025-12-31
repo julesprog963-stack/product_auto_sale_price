@@ -1,4 +1,5 @@
 from odoo import api, fields, models
+from odoo.exceptions import AccessError
 from odoo.tools.float_utils import float_compare
 
 
@@ -94,6 +95,17 @@ class ProductTemplate(models.Model):
     def _apply_auto_sale_price(self, force=False):
         if self.env.context.get("skip_auto_sale_price"):
             return
+        if not self.env.user.has_group(
+            "product_auto_sale_price.group_auto_sale_price_manager"
+        ):
+            # Only block when an automatic calculation would run.
+            targets = self.filtered(
+                lambda p: p._is_auto_price_enabled() and p._select_formula()
+            )
+            if targets:
+                raise AccessError(
+                    "No tienes permisos para usar el cálculo automático de precio."
+                )
         for product in self:
             if not product._is_auto_price_enabled():
                 continue
@@ -185,6 +197,16 @@ class ProductTemplate(models.Model):
         return products
 
     def write(self, vals):
+        if (
+            not self.env.user.has_group(
+                "product_auto_sale_price.group_auto_sale_price_manager"
+            )
+            and {"x_auto_price_enabled", "x_formula_type", "x_formula_value"}
+            & set(vals.keys())
+        ):
+            raise AccessError(
+                "No tienes permisos para usar el cálculo automático de precio."
+            )
         res = super().write(vals)
         if self.env.context.get("skip_auto_sale_price"):
             return res
@@ -200,5 +222,9 @@ class ProductTemplate(models.Model):
         return res
 
     def action_recompute_sale_price(self):
+        if not self.env.user.has_group(
+            "product_auto_sale_price.group_auto_sale_price_manager"
+        ):
+            raise AccessError("No tienes permisos para recalcular precios de venta.")
         self._apply_auto_sale_price(force=True)
         return True

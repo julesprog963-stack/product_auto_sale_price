@@ -10,6 +10,7 @@
     "images": ["static/description/icon.png"],
     "icon": "/product_auto_sale_price/static/description/icon.png",
     "data": [
+        "security/security.xml",
         "security/ir.model.access.csv",
         "views/product_template_views.xml",
         "views/product_category_views.xml",

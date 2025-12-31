@@ -1,4 +1,5 @@
 from odoo import fields, models
+from odoo.exceptions import AccessError
 
 
 class ProductCategory(models.Model):
@@ -19,6 +20,14 @@ class ProductCategory(models.Model):
     )
 
     def write(self, vals):
+        if not self.env.user.has_group(
+            "product_auto_sale_price.group_auto_sale_price_manager"
+        ):
+            for key in ("x_default_formula_type", "x_default_formula_value", "x_default_auto_price_enabled"):
+                if key in vals:
+                    raise AccessError(
+                        "No tienes permisos para usar el cálculo automático de precio."
+                    )
         res = super().write(vals)
         trigger_fields = {"x_default_formula_type", "x_default_formula_value"}
         if trigger_fields.intersection(vals):
