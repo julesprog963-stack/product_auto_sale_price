@@ -4,7 +4,7 @@
     "category": "Product",
     "summary": "Calculate sale price from cost using product/category formula with mass recompute action.",
     "author": "JDA SOLUTIONS",
-    "website": "https://github.com/julesprog963-stack/product_model_compatibility.git",
+    "website": "https://github.com/julesprog963-stack/product_auto_sale_price.git",
     "license": "LGPL-3",
     "depends": ["product"],
     "images": ["static/description/icon.png"],
