@@ -14,12 +14,21 @@ Calcula `list_price` en productos a partir del costo usando fórmulas heredables
 - Defaults desde categoría se aplican al crear/cambiar categoría en el formulario, pero el flag por producto sigue mandando.
 
 ## Instalación / upgrade fuerte
-1) Copiar el módulo a `custom_addons/product_auto_sale_price`.
-2) Actualizar módulo por CLI:
-   ```bash
-   docker compose exec odoo odoo -c /etc/odoo/odoo.conf -d <DB_NAME> -u product_auto_sale_price --stop-after-init
-   docker compose up -d odoo
-   ```
+Copiar el módulo al directorio de addons personalizado configurado en Odoo, por ejemplo:
+
+/opt/odoo/custom_addons/product_auto_sale_price
+
+Actualizar el módulo por CLI (forzar recarga):
+
+sudo -u odoo /opt/odoo/odoo-bin \
+  -c /etc/odoo/odoo.conf \
+  -d <DB_NAME> \
+  -u product_auto_sale_price \
+  --stop-after-init
+Reiniciar el servicio de Odoo:
+
+sudo systemctl restart odoo
+
 
 ## Pruebas rápidas
 - En producto: activar “Precio de venta automático”, elegir tipo de fórmula y valor, cambiar costo y verificar que `Precio de Venta` se actualiza y persiste.
