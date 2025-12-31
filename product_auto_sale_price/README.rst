@@ -16,14 +16,6 @@ Enfoque técnico
 - No se toca ``list_price`` como campo computado; se actualiza mediante ``onchange``, ``create/write`` y la acción masiva, evitando loops y manteniendo compatibilidad con listas de precios estándar.
 - Defaults desde categoría se aplican al crear/cambiar categoría en el formulario, pero el flag por producto sigue mandando.
 
-Instalación / upgrade fuerte
-----------------------------
-1) Copiar el módulo a ``custom_addons/product_auto_sale_price``.
-2) Actualizar módulo por CLI::
-
-   docker compose exec odoo odoo -c /etc/odoo/odoo.conf -d <DB_NAME> -u product_auto_sale_price --stop-after-init
-   docker compose up -d odoo
-
 Pruebas rápidas
 ---------------
 - En producto: activar "Precio de venta automático", elegir tipo de fórmula y valor, cambiar costo y verificar que "Precio de Venta" se actualiza y persiste.
