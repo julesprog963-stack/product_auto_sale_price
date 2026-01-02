@@ -1,6 +1,6 @@
 {
     "name": "Product Automatic Sale Price",
-    "version": "17.0.1.0.0",
+    "version": "17.0.1.0.1",
     "category": "Product",
     "summary": "Calculate sale price from cost using product/category formula with mass recompute action.",
     "author": "JDA SOLUTIONS",
