@@ -1,0 +1,21 @@
+{
+    "name": "Product Automatic Sale Price",
+    "version": "17.0.1.0.1",
+    "category": "Product",
+    "summary": "Calculate sale price from cost using product/category formula with mass recompute action.",
+    "author": "JDA SOLUTIONS",
+    "website": "https://github.com/julesprog963-stack/product_auto_sale_price.git",
+    "license": "LGPL-3",
+    "depends": ["product"],
+    "images": ["static/description/icon.png"],
+    "icon": "/product_auto_sale_price/static/description/icon.png",
+    "data": [
+        "security/security.xml",
+        "security/ir.model.access.csv",
+        "views/product_template_views.xml",
+        "views/product_category_views.xml",
+        "data/server_actions.xml",
+    ],
+    "installable": True,
+    "application": False,
+}

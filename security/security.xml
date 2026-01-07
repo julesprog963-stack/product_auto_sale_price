@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="group_auto_sale_price_manager" model="res.groups">
+        <field name="name">Auto Sale Price Manager</field>
+        <field name="category_id" ref="base.module_category_inventory"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- Grant the group by default to Settings/Administration users -->
+    <record id="base.group_system" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('product_auto_sale_price.group_auto_sale_price_manager'))]"/>
+    </record>
+</odoo>
