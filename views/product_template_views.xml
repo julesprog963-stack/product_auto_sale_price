@@ -33,4 +33,33 @@
             </xpath>
         </field>
     </record>
+
+    <record id="view_product_product_tree_auto_price" model="ir.ui.view">
+        <field name="name">product.product.tree.auto.price</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lst_price']" position="after">
+                <field name="x_auto_price_enabled" optional="show" groups="product_auto_sale_price.group_auto_sale_price_manager"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_product_product_form_auto_price_readonly" model="ir.ui.view">
+        <field name="name">product.product.form.auto.price.readonly</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='x_auto_price_enabled']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='x_formula_type']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='x_formula_value']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
